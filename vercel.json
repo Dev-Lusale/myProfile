@@ -1,28 +1,38 @@
 {
-  "version": 2,
-  "name": "bernard-lusale-portfolio",
-  "builds": [
-    {
-      "src": "src/Portfolio.Web/Portfolio.Web.csproj",
-      "use": "@vercel/static-build",
-      "config": {
-        "distDir": "src/Portfolio.Web/bin/Release/net9.0/publish/wwwroot"
-      }
-    }
-  ],
-  "buildCommand": "dotnet publish src/Portfolio.Web/Portfolio.Web.csproj -c Release -o src/Portfolio.Web/bin/Release/net9.0/publish",
-  "outputDirectory": "src/Portfolio.Web/bin/Release/net9.0/publish/wwwroot",
+  "buildCommand": "dotnet publish src/Portfolio.Web/Portfolio.Web.csproj -c Release -o publish",
+  "outputDirectory": "publish/wwwroot",
   "routes": [
     {
       "src": "/(.*)",
       "dest": "/index.html"
     }
   ],
-  "functions": {},
-  "rewrites": [
+  "headers": [
     {
       "source": "/(.*)",
-      "destination": "/index.html"
+      "headers": [
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "DENY"
+        },
+        {
+          "key": "X-XSS-Protection",
+          "value": "1; mode=block"
+        }
+      ]
+    },
+    {
+      "source": "/(.*)\\.(js|css|woff|woff2|eot|ttf|otf)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
     }
   ]
 }
