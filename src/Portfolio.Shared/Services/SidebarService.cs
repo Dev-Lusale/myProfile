@@ -4,7 +4,7 @@ namespace Portfolio.Shared.Services
 {
     public class SidebarService
     {
-        private bool _isCollapsed = false;
+        private bool _isCollapsed = true; // Start collapsed by default
         
         public event Action? OnStateChanged;
         

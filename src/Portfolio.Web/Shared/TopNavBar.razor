@@ -65,37 +65,48 @@
         background: white;
         border-bottom: 1px solid #e9ecef;
         padding: 0 1.5rem;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
         position: sticky;
         top: 0;
         z-index: 1000;
+        backdrop-filter: blur(10px);
+        transition: all 0.3s ease;
     }
 
     .navbar-left {
         display: flex;
         align-items: center;
         gap: 1rem;
+        flex: 1;
     }
 
     .hamburger-menu {
         background: none;
         border: none;
         cursor: pointer;
-        padding: 8px;
-        border-radius: 6px;
-        transition: all 0.3s ease;
+        padding: 10px;
+        border-radius: 8px;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         display: flex;
         align-items: center;
         justify-content: center;
+        position: relative;
+        min-width: 44px;
+        min-height: 44px;
     }
 
     .hamburger-menu:hover {
         background-color: #f8f9fa;
+        transform: scale(1.05);
+    }
+
+    .hamburger-menu:active {
+        transform: scale(0.95);
     }
 
     .hamburger-icon {
-        width: 20px;
-        height: 16px;
+        width: 22px;
+        height: 18px;
         position: relative;
         display: flex;
         flex-direction: column;
@@ -104,11 +115,12 @@
 
     .hamburger-icon span {
         display: block;
-        height: 2px;
+        height: 3px;
         width: 100%;
         background-color: #495057;
-        border-radius: 1px;
-        transition: all 0.3s ease;
+        border-radius: 2px;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        transform-origin: center;
     }
 
     .hamburger-menu:hover .hamburger-icon span {
@@ -117,52 +129,50 @@
 
     /* Animated hamburger to X transformation */
     .hamburger-menu.active .hamburger-icon span:nth-child(1) {
-        transform: rotate(45deg) translate(5px, 5px);
+        transform: rotate(45deg) translate(6px, 6px);
+        background-color: #667eea;
     }
 
     .hamburger-menu.active .hamburger-icon span:nth-child(2) {
         opacity: 0;
-        transform: translateX(-20px);
+        transform: translateX(-25px);
     }
 
     .hamburger-menu.active .hamburger-icon span:nth-child(3) {
-        transform: rotate(-45deg) translate(7px, -6px);
-    }
-
-    .hamburger-menu.active {
-        background-color: #f8f9fa;
-    }
-
-    .hamburger-menu.active .hamburger-icon span {
+        transform: rotate(-45deg) translate(6px, -6px);
         background-color: #667eea;
     }
 
-
+    .hamburger-menu.active {
+        background-color: rgba(102, 126, 234, 0.1);
+    }
 
     .navbar-brand {
         display: flex;
         flex-direction: column;
+        margin-left: 0.5rem;
     }
 
     .brand-text {
-        font-size: 1.1rem;
-        font-weight: 600;
+        font-size: 1.2rem;
+        font-weight: 700;
         color: #212529;
         line-height: 1.2;
+        letter-spacing: -0.02em;
     }
 
     .brand-subtitle {
-        font-size: 0.75rem;
+        font-size: 0.8rem;
         color: #6c757d;
         font-weight: 500;
+        letter-spacing: 0.02em;
     }
-
-
 
     .navbar-right {
         display: flex;
         align-items: center;
-        gap: 1rem;
+        gap: 1.25rem;
+        flex-shrink: 0;
     }
 
     .user-profile {
@@ -171,28 +181,145 @@
     }
 
     .profile-avatar {
-        width: 40px;
-        height: 40px;
+        width: 42px;
+        height: 42px;
         border-radius: 50%;
         overflow: hidden;
-        border: 2px solid #e9ecef;
-        transition: all 0.3s ease;
+        border: 3px solid #e9ecef;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        cursor: pointer;
     }
 
     .profile-avatar:hover {
         border-color: #667eea;
-        transform: scale(1.05);
+        transform: scale(1.08);
+        box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
     }
 
     .profile-avatar img {
         width: 100%;
         height: 100%;
         object-fit: cover;
+        transition: transform 0.3s ease;
     }
 
+    .profile-avatar:hover img {
+        transform: scale(1.1);
+    }
+
+    /* Tablet Responsive */
+    @@media (max-width: 1024px) and (min-width: 769px) {
+        .top-navbar {
+            padding: 0 1.25rem;
+        }
+        
+        .brand-text {
+            font-size: 1.1rem;
+        }
+        
+        .profile-avatar {
+            width: 38px;
+            height: 38px;
+        }
+    }
+
+    /* Mobile Responsive */
     @@media (max-width: 768px) {
+        .top-navbar {
+            height: 60px;
+            padding: 0 1rem;
+        }
+        
         .navbar-brand {
             display: none;
         }
+        
+        .hamburger-menu {
+            padding: 8px;
+            min-width: 40px;
+            min-height: 40px;
+        }
+        
+        .hamburger-icon {
+            width: 20px;
+            height: 16px;
+        }
+        
+        .hamburger-icon span {
+            height: 2.5px;
+        }
+        
+        .profile-avatar {
+            width: 36px;
+            height: 36px;
+            border-width: 2px;
+        }
+        
+        .navbar-right {
+            gap: 1rem;
+        }
+    }
+
+    /* Small Mobile */
+    @@media (max-width: 480px) {
+        .top-navbar {
+            padding: 0 0.75rem;
+        }
+        
+        .profile-avatar {
+            width: 32px;
+            height: 32px;
+        }
+        
+        .navbar-right {
+            gap: 0.75rem;
+        }
+    }
+
+    /* Landscape Mobile */
+    @@media (orientation: landscape) and (max-height: 600px) {
+        .top-navbar {
+            height: 50px;
+            padding: 0 1rem;
+        }
+        
+        .hamburger-menu {
+            padding: 6px;
+            min-width: 36px;
+            min-height: 36px;
+        }
+        
+        .profile-avatar {
+            width: 30px;
+            height: 30px;
+        }
+    }
+
+    /* High DPI Displays */
+    @@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+        .top-navbar {
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.12);
+        }
+    }
+
+    /* Reduced Motion */
+    @@media (prefers-reduced-motion: reduce) {
+        .hamburger-menu,
+        .hamburger-icon span,
+        .profile-avatar,
+        .profile-avatar img {
+            transition: none;
+        }
+    }
+
+    /* Focus Styles for Accessibility */
+    .hamburger-menu:focus {
+        outline: 2px solid #667eea;
+        outline-offset: 2px;
+    }
+
+    .profile-avatar:focus {
+        outline: 2px solid #667eea;
+        outline-offset: 2px;
     }
 </style>
