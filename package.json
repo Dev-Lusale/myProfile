@@ -1,0 +1,16 @@
+{
+  "name": "bernard-lusale-portfolio",
+  "version": "1.0.0",
+  "description": "Professional portfolio website with contact functionality",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vercel dev",
+    "build": "echo 'Build completed'"
+  },
+  "dependencies": {
+    "nodemailer": "^6.9.7"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
