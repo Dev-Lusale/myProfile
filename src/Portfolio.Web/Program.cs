@@ -8,14 +8,19 @@ var builder = WebAssemblyHostBuilder.CreateDefault(args);
 builder.RootComponents.Add<App>("#app");
 builder.RootComponents.Add<HeadOutlet>("head::after");
 
-// Configure HttpClient
-var apiBaseUrl = builder.HostEnvironment.IsDevelopment() 
-    ? "http://localhost:5000/" 
-    : "https://your-api-domain.com/"; // Update with your production API URL
-
-builder.Services.AddScoped(sp => new HttpClient 
-{ 
-    BaseAddress = new Uri(apiBaseUrl)
+// Configure HttpClient with configuration-based URL
+builder.Services.AddScoped(sp => 
+{
+    var httpClient = new HttpClient();
+    
+    // Get API base URL from configuration
+    var apiBaseUrl = builder.Configuration["ApiBaseUrl"] ?? 
+        (builder.HostEnvironment.IsDevelopment() 
+            ? "http://localhost:5000/" 
+            : "https://bernard-portfolio-api.azurewebsites.net/");
+    
+    httpClient.BaseAddress = new Uri(apiBaseUrl);
+    return httpClient;
 });
 
 // Add services

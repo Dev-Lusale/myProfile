@@ -10,6 +10,8 @@ env:
   AZURE_WEBAPP_NAME_API: 'bernard-portfolio-api'
   AZURE_WEBAPP_NAME_WEB: 'bernard-portfolio-web'
   DOTNET_VERSION: '9.0.x'
+  API_URL: 'https://bernard-portfolio-api.azurewebsites.net'
+  WEB_URL: 'https://bernard-portfolio-web.azurewebsites.net'
 
 jobs:
   build-and-deploy-api:

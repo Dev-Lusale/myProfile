@@ -1,0 +1,12 @@
+[build]
+builder = "nixpacks"
+buildCommand = "dotnet publish src/Portfolio.Api/Portfolio.Api.csproj -c Release -o publish"
+
+[deploy]
+startCommand = "dotnet publish/Portfolio.Api.dll"
+restartPolicyType = "ON_FAILURE"
+restartPolicyMaxRetries = 10
+
+[env]
+ASPNETCORE_ENVIRONMENT = "Production"
+ASPNETCORE_URLS = "http://0.0.0.0:$PORT"

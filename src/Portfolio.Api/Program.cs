@@ -18,9 +18,17 @@ builder.Services.AddDbContext<PortfolioDbContext>(options =>
     }
     else
     {
-        // Use SQL Server for production
+        // Use PostgreSQL for production (Railway/Heroku) or SQL Server (Azure)
         var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
-        options.UseSqlServer(connectionString);
+        
+        if (connectionString?.Contains("postgres") == true)
+        {
+            options.UseNpgsql(connectionString);
+        }
+        else
+        {
+            options.UseSqlServer(connectionString);
+        }
     }
 });
 
@@ -84,15 +92,19 @@ builder.Services.AddCors(options =>
         }
         else
         {
-            // Production domains - update these with your actual domains
-            policy.WithOrigins(
-                "https://your-portfolio-domain.com",
-                "https://www.your-portfolio-domain.com",
-                "https://your-api-domain.com"
-            )
-            .AllowAnyHeader()
-            .AllowAnyMethod()
-            .AllowCredentials();
+            // Production domains - these will be configured via environment variables or appsettings
+            var allowedOrigins = builder.Configuration.GetSection("AllowedOrigins").Get<string[]>() ?? new[]
+            {
+                "https://bernard-portfolio-web.azurewebsites.net",
+                "https://www.bernard-lusale.com",
+                "https://bernard-lusale.com",
+                "https://bernard-portfolio-api.azurewebsites.net"
+            };
+            
+            policy.WithOrigins(allowedOrigins)
+                  .AllowAnyHeader()
+                  .AllowAnyMethod()
+                  .AllowCredentials();
         }
     });
 });
