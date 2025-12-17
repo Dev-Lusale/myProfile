@@ -83,41 +83,7 @@ Portfolio/
 - Visual Studio 2022 or VS Code
 - SQL Server or PostgreSQL
 
-### Setup Instructions
 
-1. **Clone the repository**
-   ```bash
-   git clone <repository-url>
-   cd Portfolio
-   ```
-
-2. **Configure Database**
-   - Update connection string in `src/Portfolio.Api/appsettings.json`
-   - Choose between SQL Server or PostgreSQL
-
-3. **Run Database Migrations**
-   ```bash
-   cd src/Portfolio.Api
-   dotnet ef database update
-   ```
-
-4. **Start the API**
-   ```bash
-   cd src/Portfolio.Api
-   dotnet run
-   ```
-
-5. **Start the Web App**
-   ```bash
-   cd src/Portfolio.Web
-   dotnet run
-   ```
-
-6. **Run MAUI App** (Optional)
-   ```bash
-   cd src/Portfolio.MauiBlazor
-   dotnet build -f net9.0-windows10.0.19041.0
-   ```
 
 ## 📊 Analytics Features
 
