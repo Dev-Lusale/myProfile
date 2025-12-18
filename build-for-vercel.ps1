@@ -14,14 +14,19 @@ dotnet publish src/Portfolio.Web/Portfolio.Web.csproj -c Release -o dist
 if ($LASTEXITCODE -eq 0) {
     Write-Host "Build completed successfully!" -ForegroundColor Green
     
-    # Copy wwwroot contents to root for Vercel
+    # Copy wwwroot contents to public directory for Vercel
     if (Test-Path "dist/wwwroot") {
         Write-Host "Preparing files for Vercel..." -ForegroundColor Blue
         
-        # Copy all files from wwwroot to root directory for Vercel
-        Copy-Item -Path "dist/wwwroot/*" -Destination "." -Recurse -Force
+        # Create public directory if it doesn't exist
+        if (-not (Test-Path "public")) {
+            New-Item -ItemType Directory -Path "public" -Force | Out-Null
+        }
         
-        Write-Host "Files prepared in root directory" -ForegroundColor Green
+        # Copy all files from wwwroot to public directory for Vercel
+        Copy-Item -Path "dist/wwwroot/*" -Destination "public/" -Recurse -Force
+        
+        Write-Host "Files prepared in public directory" -ForegroundColor Green
         Write-Host ""
         Write-Host "Ready for Vercel deployment!" -ForegroundColor Green
         Write-Host "Run: vercel --prod" -ForegroundColor Yellow
