@@ -276,8 +276,6 @@ public class PortfolioDbContext : IdentityDbContext
                 Description = "Completed secondary education with strong performance in mathematics, sciences, and computer studies. Developed foundational knowledge in analytical thinking and problem-solving that laid the groundwork for pursuing computer science.",
                 Achievements = new List<string> 
                 { 
-                    "Head Boy, Academic - Demonstrated exceptional academic leadership",
-                    "JETS President - Led Junior Engineers, Technicians and Scientists Club",
                     "Participated in inter-school science competitions",
                     "Completed advanced mathematics and physics coursework"
                 },
@@ -295,6 +293,8 @@ public class PortfolioDbContext : IdentityDbContext
                 Description = "Completed junior secondary education with excellent academic performance. Developed strong foundation in core subjects including mathematics, sciences, and English, which prepared for advanced secondary studies.",
                 Achievements = new List<string> 
                 { 
+                    "Head Boy, Academic - Demonstrated exceptional academic leadership",
+                    "JETS President - Led Junior Engineers, Technicians and Scientists Club",
                     "National SOSTAZ Quiz Participant in 2019"
                 },
                 DisplayOrder = 3
