@@ -11,11 +11,11 @@
     </div>
 
     <div class="projects-grid">
-        <div class="project-card">
+        <div class="project-card" @onclick="@(() => TrackProjectView("Aquafy"))">
             <div class="project-header">
                 <h3>Aquafy - Water Quality Management System</h3>
                 <div class="project-links">
-                    <a href="https://github.com/bernardlusale/aquafy" target="_blank" class="btn btn-outline-primary btn-sm">
+                    <a href="https://github.com/bernardlusale/aquafy" target="_blank" class="btn btn-outline-primary btn-sm" @onclick:stopPropagation="true">
                         <i class="bi bi-github"></i> GitHub
                     </a>
                 </div>
@@ -36,14 +36,14 @@
             </div>
         </div>
 
-        <div class="project-card">
+        <div class="project-card" @onclick="@(() => TrackProjectView("Portfolio"))">
             <div class="project-header">
                 <h3>Portfolio Website</h3>
                 <div class="project-links">
-                    <a href="https://github.com/bernardlusale/portfolio" target="_blank" class="btn btn-outline-primary btn-sm">
+                    <a href="https://github.com/bernardlusale/portfolio" target="_blank" class="btn btn-outline-primary btn-sm" @onclick:stopPropagation="true">
                         <i class="bi bi-github"></i> GitHub
                     </a>
-                    <a href="https://bernardlusale.dev" target="_blank" class="btn btn-outline-success btn-sm">
+                    <a href="https://bernardlusale.dev" target="_blank" class="btn btn-outline-success btn-sm" @onclick:stopPropagation="true">
                         <i class="bi bi-globe"></i> Live Demo
                     </a>
                 </div>
@@ -65,11 +65,11 @@
             </div>
         </div>
 
-        <div class="project-card">
+        <div class="project-card" @onclick="@(() => TrackProjectView("Cybersecurity Assessment Tool"))">
             <div class="project-header">
                 <h3>Cybersecurity Assessment Tool</h3>
                 <div class="project-links">
-                    <a href="https://github.com/bernardlusale/security-assessment" target="_blank" class="btn btn-outline-primary btn-sm">
+                    <a href="https://github.com/bernardlusale/security-assessment" target="_blank" class="btn btn-outline-primary btn-sm" @onclick:stopPropagation="true">
                         <i class="bi bi-github"></i> GitHub
                     </a>
                 </div>
@@ -90,11 +90,11 @@
             </div>
         </div>
 
-        <div class="project-card">
+        <div class="project-card" @onclick="@(() => TrackProjectView("Student Management System"))">
             <div class="project-header">
                 <h3>Student Management System</h3>
                 <div class="project-links">
-                    <a href="https://github.com/bernardlusale/student-management" target="_blank" class="btn btn-outline-primary btn-sm">
+                    <a href="https://github.com/bernardlusale/student-management" target="_blank" class="btn btn-outline-primary btn-sm" @onclick:stopPropagation="true">
                         <i class="bi bi-github"></i> GitHub
                     </a>
                 </div>
@@ -115,11 +115,11 @@
             </div>
         </div>
 
-        <div class="project-card">
+        <div class="project-card" @onclick="@(() => TrackProjectView("API Testing Framework"))">
             <div class="project-header">
                 <h3>API Testing Framework</h3>
                 <div class="project-links">
-                    <a href="https://github.com/bernardlusale/api-testing-framework" target="_blank" class="btn btn-outline-primary btn-sm">
+                    <a href="https://github.com/bernardlusale/api-testing-framework" target="_blank" class="btn btn-outline-primary btn-sm" @onclick:stopPropagation="true">
                         <i class="bi bi-github"></i> GitHub
                     </a>
                 </div>
@@ -146,6 +146,11 @@
     protected override async Task OnInitializedAsync()
     {
         await AnalyticsService.TrackPageViewAsync("/projects", "Projects");
+    }
+
+    private async Task TrackProjectView(string projectName)
+    {
+        await AnalyticsService.TrackEventAsync("project_view", projectName);
     }
 }
 
@@ -187,11 +192,16 @@
         transition: transform 0.2s ease, box-shadow 0.2s ease;
         border: 1px solid #e9ecef;
         height: fit-content;
+        cursor: pointer;
     }
 
     .project-card:hover {
         transform: translateY(-5px);
         box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    }
+
+    .project-card:active {
+        transform: translateY(-2px);
     }
 
     .project-header {

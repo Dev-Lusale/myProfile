@@ -1,4 +1,4 @@
-@inject IApiService ApiService
+@inject IAnalyticsService AnalyticsService
 @implements IDisposable
 
 <div class="live-metrics">
@@ -19,27 +19,27 @@
 </div>
 
 @code {
-    private DashboardMetricsDto metrics = new();
+    private AnalyticsMetrics metrics = new();
     private Timer? refreshTimer;
 
     protected override async Task OnInitializedAsync()
     {
         await LoadMetrics();
         
-        // Refresh metrics every 30 seconds
-        refreshTimer = new Timer(async _ => await InvokeAsync(LoadMetrics), null, TimeSpan.Zero, TimeSpan.FromSeconds(30));
+        // Refresh metrics every 10 seconds for real-time updates
+        refreshTimer = new Timer(async _ => await InvokeAsync(LoadMetrics), null, TimeSpan.Zero, TimeSpan.FromSeconds(10));
     }
 
     private async Task LoadMetrics()
     {
         try
         {
-            metrics = await ApiService.GetDashboardMetricsAsync();
+            metrics = await AnalyticsService.GetMetricsAsync();
             StateHasChanged();
         }
-        catch
+        catch (Exception ex)
         {
-            // Silently handle errors
+            Console.WriteLine($"Error loading metrics: {ex.Message}");
         }
     }
 
