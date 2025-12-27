@@ -31,9 +31,16 @@
             <h2>Education</h2>
             
             <div class="education-item">
-                <h3>Bachelor of Science in Computer Science</h3>
-                <p class="institution">Copperbelt University, Zambia</p>
-                <p class="duration">Expected Graduation: 2028</p>
+                <div class="education-header">
+                    <div class="education-content">
+                        <h3>Bachelor of Science in Computer Science</h3>
+                        <p class="institution">Copperbelt University, Zambia</p>
+                        <p class="duration">Expected Graduation: 2028</p>
+                    </div>
+                    <div class="institution-logo">
+                        <img src="/images/CBU_Logo.png" alt="Copperbelt University Logo" class="university-logo" />
+                    </div>
+                </div>
                 <p class="description">
                     Pursuing a comprehensive computer science degree with focus on software engineering, algorithms, data structures, and modern programming paradigms. 
                     Coursework includes advanced topics in artificial intelligence, machine learning, database systems, and software architecture.
@@ -224,6 +231,40 @@
         border-radius: 12px;
         border-left: 5px solid #667eea;
         transition: all 0.3s ease;
+    }
+
+    .education-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-bottom: 1rem;
+        gap: 1rem;
+    }
+
+    .education-content {
+        flex: 1;
+    }
+
+    .institution-logo {
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+    }
+
+    .university-logo {
+        width: 60px;
+        height: 60px;
+        object-fit: contain;
+        border-radius: 8px;
+        background: white;
+        padding: 8px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+    }
+
+    .university-logo:hover {
+        transform: scale(1.05);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     }
 
     .education-item:hover {
@@ -475,6 +516,21 @@
         .education-item {
             padding: 1.25rem;
             margin-bottom: 1.5rem;
+        }
+
+        .education-header {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+
+        .institution-logo {
+            align-self: center;
+        }
+
+        .university-logo {
+            width: 50px;
+            height: 50px;
         }
         
         .achievements-list li {
