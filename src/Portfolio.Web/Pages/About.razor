@@ -54,9 +54,17 @@
             </div>
 
             <div class="education-item">
-                <h3>Secondary School Certificate</h3>
-                <p class="institution">Choma Secondary School, Zambia</p>
-                <p class="duration">Graduated:... </p>
+                <div class="education-header">
+                    <div class="education-content">
+                        <h3>Secondary School Certificate</h3>
+                        <p class="institution">Choma Secondary School, Zambia</p>
+                        <p class="duration">Graduated:... </p>
+                    </div>
+                    <div class="institution-logos">
+                        <img src="/images/BIC_logo.png" alt="BIC Logo" class="school-logo" />
+                        <img src="/images/PWC_logo.png" alt="PWC Logo" class="school-logo" />
+                    </div>
+                </div>
                 <p class="description">
                     Completed secondary education with strong performance in mathematics, sciences, and computer studies. 
                     Developed foundational knowledge in analytical thinking and problem-solving that laid the groundwork for pursuing computer science.
@@ -251,6 +259,14 @@
         align-items: center;
     }
 
+    .institution-logos {
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        flex-wrap: wrap;
+    }
+
     .university-logo {
         width: 60px;
         height: 60px;
@@ -262,7 +278,19 @@
         transition: all 0.3s ease;
     }
 
-    .university-logo:hover {
+    .school-logo {
+        width: 50px;
+        height: 50px;
+        object-fit: contain;
+        border-radius: 6px;
+        background: white;
+        padding: 6px;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+    }
+
+    .university-logo:hover,
+    .school-logo:hover {
         transform: scale(1.05);
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     }
@@ -528,9 +556,19 @@
             align-self: center;
         }
 
+        .institution-logos {
+            align-self: center;
+            justify-content: center;
+        }
+
         .university-logo {
             width: 50px;
             height: 50px;
+        }
+
+        .school-logo {
+            width: 40px;
+            height: 40px;
         }
         
         .achievements-list li {
