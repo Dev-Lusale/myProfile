@@ -1,0 +1,191 @@
+@inject IJSRuntime JSRuntime
+
+<div class="theme-toggle-container">
+    <button class="theme-toggle-btn" @onclick="ToggleTheme" title="@(isDarkMode ? "Switch to Light Mode" : "Switch to Dark Mode")">
+        <div class="toggle-track">
+            <div class="toggle-thumb @(isDarkMode ? "dark" : "light")">
+                @if (isDarkMode)
+                {
+                    <svg class="theme-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.752-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                }
+                else
+                {
+                    <svg class="theme-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.5"/>
+                        <path d="m12 2 0 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                        <path d="m12 20 0 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                        <path d="m4.93 4.93 1.41 1.41" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                        <path d="m17.66 17.66 1.41 1.41" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                        <path d="m2 12 2 0" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                        <path d="m20 12 2 0" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                        <path d="m6.34 17.66-1.41 1.41" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                        <path d="m19.07 4.93-1.41 1.41" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                    </svg>
+                }
+            </div>
+        </div>
+    </button>
+</div>
+
+@code {
+    private bool isDarkMode = false;
+
+    protected override async Task OnInitializedAsync()
+    {
+        // Check for saved theme preference or system preference
+        isDarkMode = await JSRuntime.InvokeAsync<bool>("getThemePreference");
+        await ApplyTheme();
+    }
+
+    private async Task ToggleTheme()
+    {
+        isDarkMode = !isDarkMode;
+        await ApplyTheme();
+        await JSRuntime.InvokeVoidAsync("saveThemePreference", isDarkMode);
+    }
+
+    private async Task ApplyTheme()
+    {
+        await JSRuntime.InvokeVoidAsync("applyTheme", isDarkMode);
+        StateHasChanged();
+    }
+}
+
+<style>
+    .theme-toggle-container {
+        position: fixed;
+        top: 2rem;
+        right: 2rem;
+        z-index: 1000;
+    }
+
+    .theme-toggle-btn {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 50px;
+        padding: 0.5rem;
+        cursor: pointer;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        width: 60px;
+        height: 32px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .theme-toggle-btn:hover {
+        background: rgba(255, 255, 255, 0.15);
+        border-color: rgba(255, 255, 255, 0.3);
+        transform: translateY(-2px);
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+    }
+
+    .toggle-track {
+        width: 48px;
+        height: 24px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        border-radius: 12px;
+        position: relative;
+        transition: all 0.3s ease;
+    }
+
+    .toggle-thumb {
+        width: 20px;
+        height: 20px;
+        background: white;
+        border-radius: 50%;
+        position: absolute;
+        top: 2px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .toggle-thumb.light {
+        left: 2px;
+        background: #ffd700;
+        box-shadow: 0 2px 8px rgba(255, 215, 0, 0.3);
+    }
+
+    .toggle-thumb.dark {
+        left: 26px;
+        background: #2d3748;
+        box-shadow: 0 2px 8px rgba(45, 55, 72, 0.3);
+    }
+
+    .theme-icon {
+        width: 12px;
+        height: 12px;
+        color: white;
+    }
+
+    .toggle-thumb.light .theme-icon {
+        color: #f7931e;
+    }
+
+    .toggle-thumb.dark .theme-icon {
+        color: #e2e8f0;
+    }
+
+    /* Dark mode styles for the toggle */
+    :global(body.dark-mode) .theme-toggle-btn {
+        background: rgba(0, 0, 0, 0.2);
+        border-color: rgba(255, 255, 255, 0.1);
+    }
+
+    :global(body.dark-mode) .theme-toggle-btn:hover {
+        background: rgba(0, 0, 0, 0.3);
+        border-color: rgba(255, 255, 255, 0.2);
+    }
+
+    :global(body.dark-mode) .toggle-track {
+        background: linear-gradient(135deg, #4a5568 0%, #2d3748 100%);
+    }
+
+    /* Mobile responsive */
+    @@media (max-width: 768px) {
+        .theme-toggle-container {
+            top: 1rem;
+            right: 1rem;
+        }
+
+        .theme-toggle-btn {
+            width: 56px;
+            height: 30px;
+        }
+
+        .toggle-track {
+            width: 44px;
+            height: 22px;
+        }
+
+        .toggle-thumb {
+            width: 18px;
+            height: 18px;
+        }
+
+        .toggle-thumb.dark {
+            left: 24px;
+        }
+
+        .theme-icon {
+            width: 10px;
+            height: 10px;
+        }
+    }
+
+    /* Reduced motion */
+    @@media (prefers-reduced-motion: reduce) {
+        .theme-toggle-btn,
+        .toggle-track,
+        .toggle-thumb {
+            transition: none;
+        }
+    }
+</style>
