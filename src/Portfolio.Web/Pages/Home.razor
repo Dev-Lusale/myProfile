@@ -7,10 +7,11 @@
 <div class="hero-section">
     <div class="hero-content">
         <h1 class="hero-title">Bernard Lusale</h1>
-        <h2 class="hero-subtitle">Software Engineer and Cybersecurity</h2>
+        <h2 class="hero-subtitle">Software Engineer & Cybersecurity Specialist</h2>
         <p class="hero-description">
-            Passionate about cybersecurity analysis and building secure web applications with modern technologies.
-            Specialized in security testing, vulnerability assessment, and .NET development.
+            Passionate about cybersecurity analysis and building secure web applications with modern technologies. 
+            Specialized in security testing, vulnerability assessment, and .NET development with a focus on creating 
+            robust, scalable solutions that protect digital assets and enhance user experiences.
         </p>
         
         <div class="hero-actions">
@@ -94,19 +95,58 @@
     }
 
     .hero-subtitle {
-        font-size: clamp(1.25rem, 3vw, 1.75rem);
-        color: #6c757d;
-        margin-bottom: 1.5rem;
+        font-size: clamp(1.1rem, 2.8vw, 1.6rem);
+        color: #495057;
+        margin-bottom: 1.75rem;
         font-weight: 500;
-        line-height: 1.3;
+        line-height: 1.4;
+        letter-spacing: 0.01em;
+        background: linear-gradient(135deg, #495057 0%, #6c757d 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        position: relative;
+    }
+
+    .hero-subtitle::after {
+        content: '';
+        position: absolute;
+        bottom: -0.5rem;
+        left: 0;
+        width: 60px;
+        height: 3px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        border-radius: 2px;
     }
 
     .hero-description {
-        font-size: clamp(1rem, 2vw, 1.2rem);
-        line-height: 1.7;
-        margin-bottom: 2.5rem;
+        font-size: clamp(0.95rem, 2.2vw, 1.15rem);
+        line-height: 1.8;
+        margin-bottom: 2.75rem;
         color: #495057;
-        max-width: 600px;
+        max-width: 650px;
+        font-weight: 400;
+        text-align: justify;
+        hyphens: auto;
+        word-spacing: 0.05em;
+        background: rgba(255, 255, 255, 0.9);
+        padding: 1.5rem;
+        border-radius: 12px;
+        border-left: 4px solid #667eea;
+        box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+        position: relative;
+        backdrop-filter: blur(10px);
+    }
+
+    .hero-description::before {
+        content: '"';
+        position: absolute;
+        top: -0.5rem;
+        left: 0.5rem;
+        font-size: 3rem;
+        color: #667eea;
+        font-family: Georgia, serif;
+        opacity: 0.3;
     }
 
     .hero-actions {
@@ -192,8 +232,16 @@
             padding: 3rem 0;
         }
         
+        .hero-subtitle {
+            font-size: 1.75rem;
+            margin-bottom: 2rem;
+        }
+        
         .hero-description {
-            font-size: 1.25rem;
+            font-size: 1.2rem;
+            line-height: 1.9;
+            padding: 2rem;
+            margin-bottom: 3rem;
         }
         
         .btn {
@@ -206,6 +254,15 @@
     @@media (max-width: 1199px) and (min-width: 992px) {
         .hero-section {
             gap: 3rem;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.5rem;
+        }
+        
+        .hero-description {
+            font-size: 1.1rem;
+            padding: 1.75rem;
         }
         
         .profile-image {
@@ -225,6 +282,23 @@
         
         .hero-image {
             order: -1;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.4rem;
+        }
+        
+        .hero-subtitle::after {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .hero-description {
+            font-size: 1.05rem;
+            text-align: center;
+            hyphens: none;
+            max-width: 100%;
+            margin: 0 auto 2.5rem auto;
         }
         
         .profile-image {
@@ -254,6 +328,26 @@
             order: -1;
         }
         
+        .hero-subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .hero-subtitle::after {
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+        }
+        
+        .hero-description {
+            font-size: 1rem;
+            text-align: left;
+            hyphens: auto;
+            padding: 1.25rem;
+            margin-bottom: 2rem;
+            line-height: 1.7;
+        }
+        
         .profile-image {
             max-width: 280px;
             border-width: 4px;
@@ -274,10 +368,6 @@
         .hero-social {
             justify-content: center;
         }
-        
-        .hero-description {
-            margin-bottom: 2rem;
-        }
     }
 
     /* Small Mobile (max-width: 480px) */
@@ -287,13 +377,21 @@
             padding: 1rem 0;
         }
         
-        .profile-image {
-            max-width: 240px;
-            border-width: 3px;
+        .hero-subtitle {
+            font-size: 1.1rem;
+            margin-bottom: 1.25rem;
         }
         
         .hero-description {
+            font-size: 0.95rem;
+            padding: 1rem;
             margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+        
+        .profile-image {
+            max-width: 240px;
+            border-width: 3px;
         }
         
         .hero-actions {
@@ -328,12 +426,21 @@
         }
         
         .hero-subtitle {
-            font-size: 1.1rem;
+            font-size: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero-subtitle::after {
+            left: 0;
+            transform: none;
+            width: 40px;
         }
         
         .hero-description {
-            font-size: 0.95rem;
-            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+            margin-bottom: 1.25rem;
+            padding: 1rem;
+            text-align: left;
         }
         
         .hero-actions {
