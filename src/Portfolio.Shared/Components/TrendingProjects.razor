@@ -51,16 +51,6 @@
                                 }
                                 <span class="source-label">@project.Source.ToUpper()</span>
                             </div>
-                            <div class="project-stats">
-                                <span class="stat">
-                                    <i class="stat-icon">⭐</i>
-                                    @project.Stars
-                                </span>
-                                <span class="stat">
-                                    <i class="stat-icon">👁️</i>
-                                    @project.Views
-                                </span>
-                            </div>
                         </div>
                         
                         <div class="project-content">
@@ -125,8 +115,6 @@
                 AuthorAvatar = "https://avatars.githubusercontent.com/u/13142323?s=40&v=4",
                 Source = "github",
                 Url = "https://github.com/react-native-elements/react-native-elements",
-                Stars = "24.5k",
-                Views = "1.2M",
                 Technologies = new List<string> { "React Native", "JavaScript", "TypeScript", "UI/UX" },
                 UpdatedAt = DateTime.Now.AddDays(-2)
             },
@@ -138,8 +126,6 @@
                 AuthorAvatar = "https://avatars.githubusercontent.com/u/14985020?s=40&v=4",
                 Source = "github",
                 Url = "https://github.com/vercel/commerce",
-                Stars = "8.9k",
-                Views = "456K",
                 Technologies = new List<string> { "Next.js", "React", "TypeScript", "Commerce" },
                 UpdatedAt = DateTime.Now.AddDays(-1)
             },
@@ -151,8 +137,6 @@
                 AuthorAvatar = "https://avatars.githubusercontent.com/u/54469796?s=40&v=4",
                 Source = "github",
                 Url = "https://github.com/supabase/supabase",
-                Stars = "67.2k",
-                Views = "2.1M",
                 Technologies = new List<string> { "PostgreSQL", "JavaScript", "TypeScript", "Backend" },
                 UpdatedAt = DateTime.Now.AddHours(-6)
             },
@@ -165,8 +149,6 @@
                 AuthorAvatar = "https://res.cloudinary.com/practicaldev/image/fetch/s--pcSkTMZL--/c_fill,f_auto,fl_progressive,h_90,q_auto,w_90/https://dev-to-uploads.s3.amazonaws.com/uploads/organization/profile_image/1/0213bbaa-d5a1-4d25-9e7a-10c30b455af0.png",
                 Source = "dev",
                 Url = "https://dev.to/dotnet/building-modern-web-apps-with-net-9",
-                Stars = "1.2k",
-                Views = "45K",
                 Technologies = new List<string> { ".NET 9", "C#", "Blazor", "ASP.NET Core" },
                 UpdatedAt = DateTime.Now.AddDays(-3)
             },
@@ -178,8 +160,6 @@
                 AuthorAvatar = "https://res.cloudinary.com/practicaldev/image/fetch/s--pcSkTMZL--/c_fill,f_auto,fl_progressive,h_90,q_auto,w_90/https://dev-to-uploads.s3.amazonaws.com/uploads/user/profile_image/123456/avatar.png",
                 Source = "dev",
                 Url = "https://dev.to/blazor-expert/mastering-blazor-webassembly",
-                Stars = "892",
-                Views = "32K",
                 Technologies = new List<string> { "Blazor", "WebAssembly", "C#", "Frontend" },
                 UpdatedAt = DateTime.Now.AddDays(-5)
             },
@@ -192,8 +172,6 @@
                 AuthorAvatar = "/images/dk.jpg",
                 Source = "portfolio",
                 Url = "https://github.com/Dev-Lusale/TechMart",
-                Stars = "12",
-                Views = "2.1K",
                 Technologies = new List<string> { "ASP.NET Core", "C#", "HTML", "CSS", "JavaScript", "SQL Server" },
                 UpdatedAt = DateTime.Now.AddDays(-8)
             },
@@ -205,8 +183,6 @@
                 AuthorAvatar = "/images/dk.jpg",
                 Source = "portfolio",
                 Url = "https://github.com/Dev-Lusale/student_record-thinker",
-                Stars = "8",
-                Views = "1.5K",
                 Technologies = new List<string> { "C++", "Machine Learning", "Data Analysis", "Algorithms", "Statistical Modeling" },
                 UpdatedAt = DateTime.Now.AddDays(-12)
             },
@@ -218,8 +194,6 @@
                 AuthorAvatar = "/images/dk.jpg",
                 Source = "portfolio",
                 Url = "https://github.com/Dev-Lusale/Mukubaico-enviroSafe-app",
-                Stars = "6",
-                Views = "1.2K",
                 Technologies = new List<string> { "Environmental Monitoring", "Safety Compliance", "Data Analytics", "Sustainability Reporting" },
                 UpdatedAt = DateTime.Now.AddDays(-20)
             }
@@ -404,7 +378,7 @@
 
     .project-header {
         display: flex;
-        justify-content: space-between;
+        justify-content: flex-start;
         align-items: center;
         margin-bottom: 1rem;
     }
@@ -435,23 +409,6 @@
         color: #6c757d;
         text-transform: uppercase;
         letter-spacing: 0.5px;
-    }
-
-    .project-stats {
-        display: flex;
-        gap: 1rem;
-    }
-
-    .stat {
-        display: flex;
-        align-items: center;
-        gap: 0.25rem;
-        font-size: 0.8rem;
-        color: #6c757d;
-    }
-
-    .stat-icon {
-        font-size: 0.7rem;
     }
 
     .project-content {
