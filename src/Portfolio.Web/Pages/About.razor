@@ -1,6 +1,5 @@
 @page "/about"
 @inject IAnalyticsService AnalyticsService
-@inject IJSRuntime JSRuntime
 
 <PageTitle>About - Portfolio</PageTitle>
 
@@ -46,7 +45,6 @@
                     Coursework includes advanced topics in artificial intelligence, machine learning, database systems, and software architecture.
                 </p>
                 <ul class="achievements-list">
-                   
                     <li>Active member of Computer Science Student Association</li>
                     <li>Participated in programming competitions and hackathons</li>
                     <li>Completed advanced coursework in software engineering and system design</li>
@@ -58,7 +56,6 @@
                     <div class="education-content">
                         <h3>Secondary School Certificate</h3>
                         <p class="institution">Choma Secondary School, Zambia</p>
-                        <p class="duration">Graduated:... </p>
                     </div>
                     <div class="institution-logos">
                         <img src="/images/BIC%20logo.png" alt="BIC Logo" class="school-logo" />
@@ -77,7 +74,6 @@
                     <li>Completed advanced mathematics and physics coursework</li>
                 </ul>
             </div>
-
         </div>
 
         <div class="about-section">
@@ -113,8 +109,6 @@
                         and security testing tools including Burp Suite and OWASP testing framework.
                     </p>
                 </div>
-
-
             </div>
         </div>
 
@@ -149,13 +143,8 @@
 
     private async Task DownloadCV()
     {
-        await AnalyticsService.TrackEventAsync("cv_download");
-        
-        // Create a download link and trigger the download
-        var fileName = "Bernard_Lusale_CV.pdf";
-        var fileUrl = " ";
-        
-        await JSRuntime.InvokeVoidAsync("downloadFile", fileUrl, fileName);
+        // Empty functionality - to be updated later
+        await Task.CompletedTask;
     }
 }
 
@@ -401,16 +390,6 @@
         font-size: clamp(0.8rem, 2vw, 0.9rem);
         margin: 0.25rem 0;
         font-weight: 500;
-    }
-
-    .certification-card .credential-id {
-        color: #888;
-        font-size: clamp(0.75rem, 2vw, 0.85rem);
-        font-family: 'Courier New', monospace;
-        margin: 0.75rem 0;
-        background: rgba(0, 0, 0, 0.05);
-        padding: 0.5rem;
-        border-radius: 4px;
     }
 
     .certification-card .cert-description {

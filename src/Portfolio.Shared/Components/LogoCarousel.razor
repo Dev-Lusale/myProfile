@@ -1,0 +1,278 @@
+@* Logo Carousel Component *@
+
+<div class="logo-carousel-section">
+    <div class="logo-carousel-container">
+        <div class="logo-carousel-track">
+            <div class="logo-item">
+                <img src="/images/unipod.png" alt="Unipod" class="logo-image" />
+            </div>
+            <div class="logo-item">
+                <img src="/images/undp%20logo.png" alt="UNDP" class="logo-image" />
+            </div>
+            <div class="logo-item">
+                <img src="/images/CBU_Logo.png" alt="Copperbelt University" class="logo-image" />
+            </div>
+            <div class="logo-item">
+                <img src="/images/NswiLife%20Logo.png" alt="NswiLife" class="logo-image" />
+            </div>
+            <!-- Duplicate for seamless loop -->
+            <div class="logo-item">
+                <img src="/images/unipod.png" alt="Unipod" class="logo-image" />
+            </div>
+            <div class="logo-item">
+                <img src="/images/undp%20logo.png" alt="UNDP" class="logo-image" />
+            </div>
+            <div class="logo-item">
+                <img src="/images/CBU_Logo.png" alt="Copperbelt University" class="logo-image" />
+            </div>
+            <div class="logo-item">
+                <img src="/images/NswiLife%20Logo.png" alt="NswiLife" class="logo-image" />
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .logo-carousel-section {
+        width: 100%;
+        padding: clamp(3rem, 6vw, 5rem) 0;
+        background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        border-top: 1px solid #dee2e6;
+        border-bottom: 1px solid #dee2e6;
+        overflow: hidden;
+        position: relative;
+    }
+
+    .logo-carousel-section::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: 
+            linear-gradient(90deg, rgba(248, 249, 250, 1) 0%, rgba(248, 249, 250, 0) 10%, rgba(248, 249, 250, 0) 90%, rgba(248, 249, 250, 1) 100%);
+        pointer-events: none;
+        z-index: 2;
+    }
+
+    .logo-carousel-container {
+        max-width: 1400px;
+        margin: 0 auto;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .logo-carousel-track {
+        display: flex;
+        align-items: center;
+        gap: clamp(3rem, 8vw, 6rem);
+        animation: scroll 20s linear infinite;
+        width: fit-content;
+    }
+
+    .logo-item {
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: clamp(1rem, 3vw, 2rem);
+        background: white;
+        border-radius: 16px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        border: 1px solid rgba(0, 0, 0, 0.05);
+        min-width: clamp(120px, 20vw, 180px);
+        min-height: clamp(80px, 15vw, 120px);
+    }
+
+    .logo-item:hover {
+        transform: translateY(-4px) scale(1.05);
+        box-shadow: 0 12px 40px rgba(102, 126, 234, 0.15);
+        border-color: rgba(102, 126, 234, 0.2);
+    }
+
+    .logo-image {
+        max-width: 100%;
+        max-height: 100%;
+        width: auto;
+        height: auto;
+        object-fit: contain;
+        filter: grayscale(0.3) opacity(0.8);
+        transition: all 0.3s ease;
+    }
+
+    .logo-item:hover .logo-image {
+        filter: grayscale(0) opacity(1);
+        transform: scale(1.1);
+    }
+
+    @@keyframes scroll {
+        0% {
+            transform: translateX(0);
+        }
+        100% {
+            transform: translateX(calc(-50% - clamp(1.5rem, 4vw, 3rem)));
+        }
+    }
+
+    /* Pause animation on hover */
+    .logo-carousel-track:hover {
+        animation-play-state: paused;
+    }
+
+    /* Large Desktop (1200px+) */
+    @@media (min-width: 1200px) {
+        .logo-carousel-section {
+            padding: 5rem 0;
+        }
+        
+        .logo-carousel-track {
+            gap: 6rem;
+        }
+        
+        .logo-item {
+            min-width: 200px;
+            min-height: 140px;
+            padding: 2.5rem;
+        }
+    }
+
+    /* Desktop (992px - 1199px) */
+    @@media (max-width: 1199px) and (min-width: 992px) {
+        .logo-carousel-track {
+            gap: 5rem;
+        }
+        
+        .logo-item {
+            min-width: 160px;
+            min-height: 110px;
+        }
+    }
+
+    /* Tablet (768px - 991px) */
+    @@media (max-width: 991px) and (min-width: 768px) {
+        .logo-carousel-section {
+            padding: 3rem 0;
+        }
+        
+        .logo-carousel-track {
+            gap: 4rem;
+        }
+        
+        .logo-item {
+            min-width: 140px;
+            min-height: 100px;
+            padding: 1.5rem;
+        }
+    }
+
+    /* Mobile (max-width: 767px) */
+    @@media (max-width: 767px) {
+        .logo-carousel-section {
+            padding: 2.5rem 0;
+        }
+        
+        .logo-carousel-track {
+            gap: 3rem;
+            animation-duration: 15s;
+        }
+        
+        .logo-item {
+            min-width: 120px;
+            min-height: 80px;
+            padding: 1rem;
+            border-radius: 12px;
+        }
+        
+        .logo-item:hover {
+            transform: translateY(-2px) scale(1.02);
+        }
+    }
+
+    /* Small Mobile (max-width: 480px) */
+    @@media (max-width: 480px) {
+        .logo-carousel-section {
+            padding: 2rem 0;
+        }
+        
+        .logo-carousel-track {
+            gap: 2.5rem;
+            animation-duration: 12s;
+        }
+        
+        .logo-item {
+            min-width: 100px;
+            min-height: 70px;
+            padding: 0.75rem;
+            border-radius: 10px;
+        }
+    }
+
+    /* Landscape Mobile */
+    @@media (orientation: landscape) and (max-height: 600px) {
+        .logo-carousel-section {
+            padding: 1.5rem 0;
+        }
+        
+        .logo-item {
+            min-height: 60px;
+            padding: 0.75rem;
+        }
+    }
+
+    /* High DPI Displays */
+    @@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+        .logo-item {
+            box-shadow: 0 4px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .logo-item:hover {
+            box-shadow: 0 15px 50px rgba(102, 126, 234, 0.2);
+        }
+    }
+
+    /* Reduced Motion */
+    @@media (prefers-reduced-motion: reduce) {
+        .logo-carousel-track {
+            animation: none;
+        }
+        
+        .logo-item,
+        .logo-image {
+            transition: none;
+        }
+        
+        .logo-item:hover {
+            transform: none;
+        }
+        
+        .logo-item:hover .logo-image {
+            transform: none;
+        }
+    }
+
+    /* Print Styles */
+    @@media print {
+        .logo-carousel-section {
+            display: none;
+        }
+    }
+
+    /* Dark mode support (if implemented) */
+    @@media (prefers-color-scheme: dark) {
+        .logo-carousel-section {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            border-color: #404040;
+        }
+        
+        .logo-item {
+            background: #2d2d2d;
+            border-color: #404040;
+        }
+        
+        .logo-item:hover {
+            border-color: rgba(102, 126, 234, 0.4);
+        }
+    }
+</style>
