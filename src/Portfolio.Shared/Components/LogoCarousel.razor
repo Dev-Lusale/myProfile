@@ -4,29 +4,37 @@
     <div class="logo-carousel-container">
         <div class="logo-carousel-track">
             <div class="logo-item">
-                <img src="/images/unipod.png" alt="Unipod" class="logo-image" />
+                <img src="/images/carousel/unipod.png" alt="Unipod" class="logo-image" 
+                     onerror="this.src='/images/placeholder.svg'; this.alt='Unipod (placeholder)';" />
             </div>
             <div class="logo-item">
-                <img src="/images/undp%20logo.png" alt="UNDP" class="logo-image" />
+                <img src="/images/carousel/undp%20logo.png" alt="UNDP" class="logo-image" 
+                     onerror="this.src='/images/placeholder.svg'; this.alt='UNDP (placeholder)';" />
             </div>
             <div class="logo-item">
-                <img src="/images/CBU_Logo.png" alt="Copperbelt University" class="logo-image" />
+                <img src="/images/CBU_Logo.png" alt="Copperbelt University" class="logo-image" 
+                     onerror="this.src='/images/placeholder.svg'; this.alt='CBU (placeholder)';" />
             </div>
             <div class="logo-item">
-                <img src="/images/NswiLife%20Logo.png" alt="NswiLife" class="logo-image" />
+                <img src="/images/carousel/NswiLife%20Logo.png" alt="NswiLife" class="logo-image" 
+                     onerror="this.src='/images/placeholder.svg'; this.alt='NswiLife (placeholder)';" />
             </div>
             <!-- Duplicate for seamless loop -->
             <div class="logo-item">
-                <img src="/images/unipod.png" alt="Unipod" class="logo-image" />
+                <img src="/images/carousel/unipod.png" alt="Unipod" class="logo-image" 
+                     onerror="this.src='/images/placeholder.svg'; this.alt='Unipod (placeholder)';" />
             </div>
             <div class="logo-item">
-                <img src="/images/undp%20logo.png" alt="UNDP" class="logo-image" />
+                <img src="/images/carousel/undp%20logo.png" alt="UNDP" class="logo-image" 
+                     onerror="this.src='/images/placeholder.svg'; this.alt='UNDP (placeholder)';" />
             </div>
             <div class="logo-item">
-                <img src="/images/CBU_Logo.png" alt="Copperbelt University" class="logo-image" />
+                <img src="/images/CBU_Logo.png" alt="Copperbelt University" class="logo-image" 
+                     onerror="this.src='/images/placeholder.svg'; this.alt='CBU (placeholder)';" />
             </div>
             <div class="logo-item">
-                <img src="/images/NswiLife%20Logo.png" alt="NswiLife" class="logo-image" />
+                <img src="/images/carousel/NswiLife%20Logo.png" alt="NswiLife" class="logo-image" 
+                     onerror="this.src='/images/placeholder.svg'; this.alt='NswiLife (placeholder)';" />
             </div>
         </div>
     </div>
@@ -76,14 +84,16 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        padding: clamp(1rem, 3vw, 2rem);
+        padding: clamp(1.5rem, 3vw, 2.5rem);
         background: white;
         border-radius: 16px;
         box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
         transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         border: 1px solid rgba(0, 0, 0, 0.05);
-        min-width: clamp(120px, 20vw, 180px);
-        min-height: clamp(80px, 15vw, 120px);
+        width: clamp(140px, 25vw, 200px);
+        height: clamp(100px, 18vw, 140px);
+        position: relative;
+        overflow: hidden;
     }
 
     .logo-item:hover {
@@ -93,13 +103,14 @@
     }
 
     .logo-image {
-        max-width: 100%;
-        max-height: 100%;
+        max-width: 85%;
+        max-height: 85%;
         width: auto;
         height: auto;
         object-fit: contain;
-        filter: grayscale(0.3) opacity(0.8);
+        filter: grayscale(0.2) opacity(0.85);
         transition: all 0.3s ease;
+        display: block;
     }
 
     .logo-item:hover .logo-image {
@@ -132,9 +143,14 @@
         }
         
         .logo-item {
-            min-width: 200px;
-            min-height: 140px;
-            padding: 2.5rem;
+            width: 220px;
+            height: 160px;
+            padding: 3rem;
+        }
+        
+        .logo-image {
+            max-width: 80%;
+            max-height: 80%;
         }
     }
 
@@ -145,8 +161,14 @@
         }
         
         .logo-item {
-            min-width: 160px;
-            min-height: 110px;
+            width: 180px;
+            height: 130px;
+            padding: 2rem;
+        }
+        
+        .logo-image {
+            max-width: 82%;
+            max-height: 82%;
         }
     }
 
@@ -161,9 +183,14 @@
         }
         
         .logo-item {
-            min-width: 140px;
-            min-height: 100px;
+            width: 160px;
+            height: 110px;
             padding: 1.5rem;
+        }
+        
+        .logo-image {
+            max-width: 85%;
+            max-height: 85%;
         }
     }
 
@@ -179,10 +206,15 @@
         }
         
         .logo-item {
-            min-width: 120px;
-            min-height: 80px;
+            width: 140px;
+            height: 100px;
             padding: 1rem;
             border-radius: 12px;
+        }
+        
+        .logo-image {
+            max-width: 88%;
+            max-height: 88%;
         }
         
         .logo-item:hover {
@@ -202,10 +234,15 @@
         }
         
         .logo-item {
-            min-width: 100px;
-            min-height: 70px;
+            width: 120px;
+            height: 85px;
             padding: 0.75rem;
             border-radius: 10px;
+        }
+        
+        .logo-image {
+            max-width: 90%;
+            max-height: 90%;
         }
     }
 
@@ -216,8 +253,14 @@
         }
         
         .logo-item {
-            min-height: 60px;
+            width: 100px;
+            height: 70px;
             padding: 0.75rem;
+        }
+        
+        .logo-image {
+            max-width: 90%;
+            max-height: 90%;
         }
     }
 
