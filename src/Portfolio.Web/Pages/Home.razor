@@ -251,13 +251,17 @@
     .hero-actions {
         display: flex;
         gap: 1.25rem;
-        margin-bottom: 2.5rem;
+        margin-bottom: 2rem;
         flex-wrap: wrap;
+        justify-content: flex-start;
+        align-items: center;
     }
 
     .hero-social {
         display: flex;
         justify-content: flex-start;
+        align-items: center;
+        gap: 1rem;
     }
 
     .btn {
@@ -417,10 +421,16 @@
         
         .hero-social {
             justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            display: flex;
         }
         
         .hero-actions {
             justify-content: center;
+            align-items: center;
+            gap: 1.25rem;
+            flex-wrap: wrap;
         }
     }
 
@@ -480,16 +490,28 @@
             flex-direction: column;
             align-items: center;
             gap: 1rem;
+            justify-content: center;
+            width: 100%;
+            padding: 0 1rem;
         }
         
         .btn {
             width: 100%;
-            max-width: 280px;
-            padding: 0.875rem 2rem;
+            max-width: 300px;
+            padding: 1rem 2rem;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
         }
         
         .hero-social {
             justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            width: 100%;
+            display: flex;
         }
     }
 
