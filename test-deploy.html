@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Deployment Test - Bernard Lusale Portfolio</title>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            text-align: center; 
+            padding: 50px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        .test-box {
+            background: rgba(255,255,255,0.1);
+            padding: 30px;
+            border-radius: 15px;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-box">
+        <h1>🚀 Deployment Test Successful!</h1>
+        <p>If you can see this page, the deployment pipeline is working.</p>
+        <p><strong>Timestamp:</strong> <span id="timestamp"></span></p>
+        <p>Bernard Lusale Portfolio - Version 2.0</p>
+    </div>
+    <script>
+        document.getElementById('timestamp').textContent = new Date().toLocaleString();
+    </script>
+</body>
+</html>
