@@ -1,8 +1,7 @@
 {
-  "framework": null,
-  "buildCommand": "bash build.sh",
+  "buildCommand": "mkdir -p public && dotnet publish src/Portfolio.Web/Portfolio.Web.csproj -c Release -o dist && cp -r dist/wwwroot/* public/",
   "outputDirectory": "public",
-  "installCommand": "echo 'Dependencies will be installed in build script'",
+  "installCommand": "curl -sSL https://dot.net/v1/dotnet-install.sh | bash && export PATH=\"$HOME/.dotnet:$PATH\"",
   "rewrites": [
     {
       "source": "/(.*)",
