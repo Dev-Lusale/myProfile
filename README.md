@@ -2,6 +2,8 @@
 
 A comprehensive, data-driven portfolio platform built with Blazor WebAssembly, .NET MAUI Blazor Hybrid, and ASP.NET Core Web API. This platform serves as a living portfolio system for Software Engineers with real-time analytics, visitor tracking, and engagement metrics.
 
+![image alt](https://github.com/dev-lusale/myProfile/blob/main/bernard.png?raw=true)
+
 ## 🏗️ Architecture
 
 ### Frontend
